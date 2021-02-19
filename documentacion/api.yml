@@ -1,0 +1,180 @@
+openapi: 3.0.1
+info:
+  title: API Rest para registrar y actualizar información de usuarios
+  version: "1.0"
+servers:
+  - url: "http://localhost:8000/api/"
+paths:
+  /register:
+    post:
+      description: Registra una cuenta y devuelve un token
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#components/schemas/Account'
+            example:
+              email: contacto@juanjoserv.com
+              password: "1234password"
+      responses:
+        '201':
+          description: "Código que indica que la cuenta fue creada con éxito"
+          content:
+            application/json:
+              schema:
+                $ref: '#components/schemas/Response'
+              example:
+                message: Cuenta creada con éxito
+                token: "ee9d99a123391683d08c1f34a2da7f82d6c09e1b"
+        '400':
+          description: Hubo un problema al momento de crear la cuenta
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Response"
+              examples:
+                incorrecto:
+                  value:
+                    message: "El usuario o contraseña son invalidos"
+                existe:
+                  value:
+                    message: "El usuario ya existe"
+  /me/profile:
+    patch:
+      description: "Actualizar información parcial del perfil"
+      parameters:
+        - in: header
+          name: Authorization
+          schema:
+            type: string
+          example: Token e96cbdea891621cfd6bbb50985684be9fd96b8e4
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Profile"
+            example:
+              first_name: "Jack"
+              last_name: "Cloudman"
+              birth_date: "2021-02-19"
+              gender: "Male"
+              phone_number: "555555555"
+              address: "Calle 1"
+      responses:
+        '200':
+          description: "Actualización realizada con éxito"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Response"
+              example:
+                message: "Datos actualizados, en espera de aprobación"
+        '400':
+          description: Hubo un problema al actualizar los datos del perfil
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Response"
+              examples:
+                incorrecto:
+                  value:
+                    message: "Los datos ingresados son erroneos"
+                validado:
+                  value:
+                    message: "El usuario ya se encuentra validado"
+        '401':
+          description: Hay un error en la autenticación
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Response"
+              example:
+                message: Invalid token
+  /me:
+    get:
+      description: Obtener información del perfil del usuario
+      parameters:
+        - in: header
+          name: Authorization
+          schema:
+            type: string
+          example: Token e96cbdea891621cfd6bbb50985684be9fd96b8e4
+      responses:
+        '200':
+          description: Se pudo obtener la información del usuario
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Profile"
+              example:
+                first_name: "Jack"
+                last_name: "Cloudman"
+                birth_date: "2021-02-19"
+                gender: "Male"
+                phone_number: "555555555"
+                address: "Calle 1"
+        '401':
+          description: Hay un error en la autenticación
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Response"
+              example:
+                message: Invalid token          
+                      
+components:
+  schemas:
+    Account:
+      title: Información del a cuenta de usuario
+      required:
+        - email
+        - password
+      properties:
+        email:
+          type: string
+          description: Email al que la cuenta va a estar asociada
+        password:
+          type: string
+          description: Contraseña de la cuenta
+    Profile:
+      title: Información del perfil
+      type: object
+      properties:
+        first_name:
+          type: string
+          description: Nombre del usuario
+        last_name:
+          type: string 
+          description: Apellido del usuario
+        birth_date:
+          type: string
+          description: Fecha de cumpleaños del usuario
+        gender:
+          type: string
+          description: Genero del usuario
+          enum:
+            - Male
+            - Female
+            - Other
+        phone_number:
+          type: string
+          description: Numero telefónico del usuario
+        address:
+          type: string
+          description: Dirección del usuario
+    Response:
+      title: Respuesta de la API
+      type: object
+      required:
+        - "message"
+      properties:
+        message:
+          type: string
+          description: Descripción detalla da la respuesta
+        token:
+          type: string
+          description: Token que se devuelve cuando se crea una cuenta
+          
+      
+
+
