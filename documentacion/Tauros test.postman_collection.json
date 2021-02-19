@@ -1,0 +1,442 @@
+{
+	"info": {
+		"_postman_id": "6c2974f0-9eee-46fd-8f69-522d98ef202d",
+		"name": "Tauros test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Registrar",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "jack@juanjoserv.com",
+							"description": "email del usuario",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "1q2w3e4r5t6ya",
+							"description": "contraseña con la que se quiere registrar el usuario",
+							"type": "text"
+						}
+					],
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://tauros.juanjoserv.com:8888/api/register",
+					"protocol": "http",
+					"host": [
+						"tauros",
+						"juanjoserv",
+						"com"
+					],
+					"port": "8888",
+					"path": [
+						"api",
+						"register"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Registro exitoso",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "jack@juanjoserv.com",
+									"description": "email del usuario",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "1q2w3e4r5t6ya",
+									"description": "contraseña con la que se quiere registrar el usuario",
+									"type": "text"
+								}
+							],
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://tauros.juanjoserv.com:8888/api/register",
+							"protocol": "http",
+							"host": [
+								"tauros",
+								"juanjoserv",
+								"com"
+							],
+							"port": "8888",
+							"path": [
+								"api",
+								"register"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Fri, 19 Feb 2021 04:31:27 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.8.5"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept"
+						},
+						{
+							"key": "Allow",
+							"value": "POST, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "90"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Usuario creado con éxito\",\n    \"token\": \"0c98736f860d995bbb9507f789e6d2c9621c36c5\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Get me",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token 0c98736f860d995bbb9507f789e6d2c9621c36c5",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://tauros.juanjoserv.com:8888/api/me",
+					"protocol": "http",
+					"host": [
+						"tauros",
+						"juanjoserv",
+						"com"
+					],
+					"port": "8888",
+					"path": [
+						"api",
+						"me"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Datos despues de actualización",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token 0c98736f860d995bbb9507f789e6d2c9621c36c5",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://tauros.juanjoserv.com:8888/api/me",
+							"protocol": "http",
+							"host": [
+								"tauros",
+								"juanjoserv",
+								"com"
+							],
+							"port": "8888",
+							"path": [
+								"api",
+								"me"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Fri, 19 Feb 2021 04:34:27 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.8.5"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept"
+						},
+						{
+							"key": "Allow",
+							"value": "OPTIONS, GET"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "131"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"first_name\": \"Jack\",\n    \"last_name\": \"Reyes\",\n    \"birth_date\": \"1997-12-12\",\n    \"gender\": \"Male\",\n    \"phone_number\": \"5581662940\",\n    \"address\": \"Calle 1\"\n}"
+				},
+				{
+					"name": "Datos sin actualizar",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token 0c98736f860d995bbb9507f789e6d2c9621c36c5",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://tauros.juanjoserv.com:8888/api/me",
+							"protocol": "http",
+							"host": [
+								"tauros",
+								"juanjoserv",
+								"com"
+							],
+							"port": "8888",
+							"path": [
+								"api",
+								"me"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Fri, 19 Feb 2021 04:33:06 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.8.5"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept"
+						},
+						{
+							"key": "Allow",
+							"value": "OPTIONS, GET"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "103"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"first_name\": null,\n    \"last_name\": null,\n    \"birth_date\": null,\n    \"gender\": null,\n    \"phone_number\": null,\n    \"address\": null\n}"
+				}
+			]
+		},
+		{
+			"name": "Update me",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token 0c98736f860d995bbb9507f789e6d2c9621c36c5",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"first_name\": \"Jack\",\r\n    \"last_name\": \"Reyes\",\r\n    \"birth_date\": \"1997-12-12\",\r\n    \"gender\": \"Male\",\r\n    \"phone_number\": \"5581662940\",\r\n    \"address\": \"Calle 1\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://tauros.juanjoserv.com:8888/api/me/profile",
+					"protocol": "http",
+					"host": [
+						"tauros",
+						"juanjoserv",
+						"com"
+					],
+					"port": "8888",
+					"path": [
+						"api",
+						"me",
+						"profile"
+					],
+					"query": [
+						{
+							"key": "Authorization",
+							"value": "Token 66b7ca86ccfd6c03790ab2e1979eb74ca4bf1013",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Actualización correcta",
+					"originalRequest": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token 0c98736f860d995bbb9507f789e6d2c9621c36c5",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"first_name\": \"Jack\",\r\n    \"last_name\": \"Reyes\",\r\n    \"birth_date\": \"1997-12-12\",\r\n    \"gender\": \"Male\",\r\n    \"phone_number\": \"5581662940\",\r\n    \"address\": \"Calle 1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://tauros.juanjoserv.com:8888/api/me/profile",
+							"protocol": "http",
+							"host": [
+								"tauros",
+								"juanjoserv",
+								"com"
+							],
+							"port": "8888",
+							"path": [
+								"api",
+								"me",
+								"profile"
+							],
+							"query": [
+								{
+									"key": "Authorization",
+									"value": "Token 66b7ca86ccfd6c03790ab2e1979eb74ca4bf1013",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Fri, 19 Feb 2021 04:34:05 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.8.5"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept"
+						},
+						{
+							"key": "Allow",
+							"value": "PATCH, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "58"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Datos actualizados, en espera de aprobación\"\n}"
+				}
+			]
+		}
+	]
+}
